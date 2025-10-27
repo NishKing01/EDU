@@ -50,9 +50,14 @@
         <div id="calendar-grid" class="calendar-grid"></div>
         <form id="add-event-form">
           <input type="text" id="event-title-input" placeholder="Event title" required />
-          <select id="event-subject">
+          <select id="event-subject" name="subject">
             <option>Chemistry</option>
             <option>Physics</option>
+            <option>Biology</option>
+            <option>Mathematics</option>
+            <option>Computer Science</option>
+            <option>English</option>
+            <option>Islamic Studies</option>
           </select>
           <button type="submit">Add Event</button>
         </form>
@@ -65,6 +70,100 @@
           <select name="subject">
             <option>Chemistry</option>
             <option>Physics</option>
+            <option>Biology</option>
+            <option>Mathematics</option>
+            <option>Computer Science</option>
+            <option>English</option>
+            <option>Islamic Studies</option>
+          </select>
+          <input type="file" name="uploadFile" required />
+          <button type="submit">Upload</button>
+        </form>
+      </section>
+
+      <footer class="footer">© EduHub — ESP32 Edition</footer>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>EduHub — ESP32 Edition</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="logo">E</span><span class="brand-name">EduHub</span></div>
+      <nav>
+        <a href="#dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="#classes"><i class="fa-solid fa-chalkboard-user"></i> Classes</a>
+        <a href="#calendar"><i class="fa-regular fa-calendar"></i> Calendar</a>
+      </nav>
+      <div class="profile">
+        <div class="avatar" id="profile-avatar">U</div>
+        <div class="profile-name" id="profile-name">User</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h1>Welcome back, <span id="hero-username">User</span></h1>
+      </header>
+
+      <section id="dashboard" class="card">
+        <h2>Materials</h2>
+        <table>
+          <tr><th>Title</th><th>Subject</th><th>Format</th></tr>
+          <tr><td>DAQ Guide</td><td>Physics</td><td>PDF</td></tr>
+          <tr><td>Organic Notes</td><td>Chemistry</td><td>PDF</td></tr>
+        </table>
+      </section>
+
+      <section id="classes" class="card">
+        <h2>Classes</h2>
+        <div class="grid">
+          <div class="class-card"><h3>Chemistry 101</h3><p>Lab techniques & experiments</p></div>
+          <div class="class-card"><h3>Mathematics</h3><p>Applied math & simulations</p></div>
+        </div>
+      </section>
+
+      <section id="calendar" class="card">
+        <h2>Calendar</h2>
+        <div id="calendar-title">Month</div>
+        <div id="calendar-grid" class="calendar-grid"></div>
+        <form id="add-event-form">
+          <input type="text" id="event-title-input" placeholder="Event title" required />
+          <select id="event-subject" name="subject">
+            <option>Chemistry</option>
+            <option>Physics</option>
+            <option>Biology</option>
+            <option>Mathematics</option>
+            <option>Computer Science</option>
+            <option>English</option>
+            <option>Islamic Studies</option>
+          </select>
+          <button type="submit">Add Event</button>
+        </form>
+      </section>
+
+      <section id="upload" class="card">
+        <h2>Upload Resource</h2>
+        <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
+          <input type="text" id="uploader" placeholder="Your name" required />
+          <select name="subject">
+            <option>Chemistry</option>
+            <option>Physics</option>
+            <option>Biology</option>
+            <option>Mathematics</option>
+            <option>Computer Science</option>
+            <option>English</option>
+            <option>Islamic Studies</option>
           </select>
           <input type="file" name="uploadFile" required />
           <button type="submit">Upload</button>
