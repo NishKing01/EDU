@@ -8,11 +8,36 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem(nameKey, userName);
   }
 
+  // Update UI with user name
   document.getElementById('hero-username').textContent = userName;
   document.getElementById('profile-name').textContent = userName;
   document.getElementById('profile-avatar').textContent = userName[0].toUpperCase();
   document.getElementById('uploader').value = userName;
 
+  // Subject list
+  const subjects = [
+    'Chemistry',
+    'Physics',
+    'Biology',
+    'Mathematics',
+    'Computer Science',
+    'English',
+    'Islamic Studies'
+  ];
+
+  // Populate subject dropdowns
+  const subjectDropdowns = document.querySelectorAll('select[name="subject"], #event-subject');
+  subjectDropdowns.forEach(dropdown => {
+    dropdown.innerHTML = '';
+    subjects.forEach(subject => {
+      const option = document.createElement('option');
+      option.value = subject;
+      option.textContent = subject;
+      dropdown.appendChild(option);
+    });
+  });
+
+  // Generate calendar
   const calendarTitle = document.getElementById('calendar-title');
   const calendarGrid = document.getElementById('calendar-grid');
   const today = new Date();
@@ -42,11 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
     calendarGrid.appendChild(cell);
   }
 
+  // Handle event submission
   document.getElementById('add-event-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('event-title-input').value;
     const subject = document.getElementById('event-subject').value;
     const date = new Date().toISOString().split('T')[0];
+
+    if (!subjects.includes(subject)) {
+      alert('Invalid subject selected.');
+      return;
+    }
 
     fetch('/add-event', {
       method: 'POST',
@@ -55,3 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then(() => alert('Event saved!'));
   });
 });
+
