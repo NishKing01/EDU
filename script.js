@@ -12,6 +12,18 @@ body {
   color: white;
   padding: 1rem;
 }
+.sidebar .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.sidebar .logo {
+  background: white;
+  color: #0077cc;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
 .sidebar a {
   color: white;
   text-decoration: none;
@@ -76,4 +88,3 @@ th, td {
   margin-top: 2rem;
   font-size: 0.9rem;
 }
-
