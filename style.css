@@ -55,4 +55,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then(() => alert('Event saved!'));
   });
 });
-
