@@ -2,19 +2,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameKey = 'eduhub-user';
   let userName = localStorage.getItem(nameKey);
 
-  if (!userName) {
+  if (!userName || userName.trim() === '') {
     userName = prompt("Welcome to EduHub! What's your name?");
-    if (!userName || userName.trim() === '') userName = 'Anonymous';
-    localStorage.setItem(nameKey, userName);
+    if (userName && userName.trim() !== '') {
+      localStorage.setItem(nameKey, userName);
+    } else {
+      userName = '';
+    }
   }
 
-  // Update UI with user name
-  document.getElementById('hero-username').textContent = userName;
-  document.getElementById('profile-name').textContent = userName;
-  document.getElementById('profile-avatar').textContent = userName[0].toUpperCase();
-  document.getElementById('uploader').value = userName;
+  if (userName) {
+    document.getElementById('hero-username').textContent = userName;
+    document.getElementById('profile-name').textContent = userName;
+    document.getElementById('profile-avatar').textContent = userName[0].toUpperCase();
+    document.getElementById('uploader').value = userName;
+  }
 
-  // Subject list
   const subjects = [
     'Chemistry',
     'Physics',
@@ -25,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     'Islamic Studies'
   ];
 
-  // Populate subject dropdowns
   const subjectDropdowns = document.querySelectorAll('select[name="subject"], #event-subject');
   subjectDropdowns.forEach(dropdown => {
     dropdown.innerHTML = '';
@@ -37,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Generate calendar
   const calendarTitle = document.getElementById('calendar-title');
   const calendarGrid = document.getElementById('calendar-grid');
   const today = new Date();
@@ -67,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     calendarGrid.appendChild(cell);
   }
 
-  // Handle event submission
   document.getElementById('add-event-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('event-title-input').value;
@@ -86,4 +86,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then(() => alert('Event saved!'));
   });
 });
-
