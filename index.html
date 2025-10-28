@@ -12,8 +12,9 @@
     <aside class="sidebar">
       <div class="brand"><span class="logo">E</span><span class="brand-name">EduHub</span></div>
       <nav>
-        <a href="#dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
         <a href="#classes"><i class="fa-solid fa-chalkboard-user"></i> Classes</a>
+        <a href="#dashboard"><i class="fa-solid fa-house"></i> Materials</a>
+        <a href="#upload"><i class="fa-solid fa-upload"></i> Upload</a>
         <a href="#calendar"><i class="fa-regular fa-calendar"></i> Calendar</a>
       </nav>
       <div class="profile">
@@ -24,70 +25,10 @@
 
     <main class="main">
       <header class="topbar">
-        <h1>Welcome back to EduHub</h1>
+        <h1>Welcome back, <span id="hero-username"></span></h1>
       </header>
 
-      <section id="upload" class="card">
-        <h2>Upload a Resource</h2>
-        <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
-          <label for="uploader">Your Name</label>
-          <input type="text" id="uploader" placeholder="e.g. Haikal" required />
-
-          <label for="subject">Subject</label>
-          <select name="subject" id="subject"></select>
-
-          <label for="uploadFile">Choose File</label>
-          <input type="file" name="uploadFile" id="uploadFile" required />
-
-          <button type="submit">Upload</button>
-        </form>
-      </section>
-
-      <section id="dashboard" class="card">
-        <h2>Materials</h2>
-        <div class="filters">
-          <select id="filter-subject">
-            <option>All Subjects</option>
-            <option>Chemistry</option>
-            <option>Physics</option>
-            <option>Biology</option>
-            <option>Mathematics</option>
-            <option>Computer Science</option>
-            <option>English</option>
-            <option>Islamic Studies</option>
-          </select>
-
-          <select id="filter-format">
-            <option>All Formats</option>
-            <option>PDF</option>
-            <option>DOCX</option>
-            <option>ZIP</option>
-            <option>IPYNB</option>
-          </select>
-
-          <select id="sort-order">
-            <option>Newest First</option>
-            <option>Oldest First</option>
-            <option>A–Z</option>
-          </select>
-        </div>
-
-        <div class="material-list">
-          <div class="material-card">
-            <div class="material-title">Simulations_Notebook.ipynb</div>
-            <div class="material-meta">Format: IPYNB</div>
-          </div>
-          <div class="material-card">
-            <div class="material-title">Titration Lab Guide.pdf</div>
-            <div class="material-meta">Format: PDF</div>
-          </div>
-          <div class="material-card">
-            <div class="material-title">PID_Control_Project.zip</div>
-            <div class="material-meta">Format: ZIP</div>
-          </div>
-        </div>
-      </section>
-
+      <!-- 🧪 Classes First -->
       <section id="classes" class="card">
         <h2>Classes</h2>
         <div class="grid">
@@ -101,14 +42,62 @@
         </div>
       </section>
 
+      <!-- 📚 Materials Second -->
+      <section id="dashboard" class="card">
+        <h2>Materials</h2>
+        <div class="filters">
+          <select id="filter-subject">
+            <option>All Subjects</option>
+            <option>Chemistry</option>
+            <option>Physics</option>
+            <option>Biology</option>
+            <option>Mathematics</option>
+            <option>Computer Science</option>
+            <option>English</option>
+            <option>Islamic Studies</option>
+          </select>
+          <select id="filter-format">
+            <option>All Formats</option>
+            <option>PDF</option>
+            <option>DOCX</option>
+            <option>ZIP</option>
+            <option>IPYNB</option>
+          </select>
+          <select id="sort-order">
+            <option>Newest First</option>
+            <option>Oldest First</option>
+            <option>A–Z</option>
+          </select>
+        </div>
+        <div class="material-list" id="material-list"></div>
+      </section>
+
+      <!-- 📤 Upload Third -->
+      <section id="upload" class="card">
+        <h2>Upload a Resource</h2>
+        <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
+          <label for="uploader">Your Name</label>
+          <input type="text" id="uploader" placeholder="e.g. Danish" required />
+          <label for="subject">Subject</label>
+          <select name="subject" id="subject"></select>
+          <label for="uploadFile">Choose File</label>
+          <input type="file" name="uploadFile" id="uploadFile" required />
+          <button type="submit">Upload</button>
+        </form>
+      </section>
+
+      <!-- 📅 Calendar Last -->
       <section id="calendar" class="card">
         <h2>Calendar</h2>
-        <div id="calendar-title">Month</div>
+        <div class="calendar-header">
+          <div id="calendar-title">October 2025</div>
+          <button id="add-event-btn">Add Event</button>
+        </div>
         <div id="calendar-grid" class="calendar-grid"></div>
-        <form id="add-event-form">
+        <form id="add-event-form" style="display:none;">
           <input type="text" id="event-title-input" placeholder="Event title" required />
           <select id="event-subject" name="subject"></select>
-          <button type="submit">Add Event</button>
+          <button type="submit">Save Event</button>
         </form>
       </section>
 
