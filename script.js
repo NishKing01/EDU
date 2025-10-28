@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // ✅ USER SETUP
   const nameKey = 'eduhub-user';
   let userName = localStorage.getItem(nameKey);
 
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('uploader').value = userName;
   }
 
+  // ✅ SUBJECT DROPDOWNS
   const subjects = [
     'Chemistry',
     'Physics',
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 📅 Calendar Logic
+  // ✅ CALENDAR LOGIC
   function renderCalendar() {
     const calendarTitle = document.getElementById('calendar-title');
     const calendarGrid = document.getElementById('calendar-grid');
@@ -103,20 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  document.getElementById('add-event-btn').addEventListener('click', () => {
-    const today = new Date();
-    const dateKey = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
-    document.getElementById('add-event-form').style.display = 'block';
-    document.getElementById('add-event-form').dataset.date = dateKey;
-  });
-
   document.getElementById('add-event-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const title = document.getElementById('event-title-input').value;
     const subject = document.getElementById('event-subject').value;
     const date = e.target.dataset.date;
 
-    if (!title || !subject) return;
+    if (!title || !subject || !date) return;
 
     const event = { title, subject, date };
     const events = JSON.parse(localStorage.getItem('eduhub-events') || '[]');
@@ -130,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderCalendar();
 
-  // 📚 Materials Logic
+  // ✅ MATERIALS LOGIC
   function renderMaterials() {
     const list = document.getElementById('material-list');
     const subjectFilter = document.getElementById('filter-subject').value;
