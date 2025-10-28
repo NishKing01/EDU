@@ -305,18 +305,23 @@ form button:hover {
 
   .calendar-label,
   .calendar-day {
-    font-size: 0.65rem;
-    padding: 0.3rem;
-    min-height: 50px;
+    font-size: 0.6rem;
+    padding: 0.25rem;
+    min-height: 40px;
   }
 
   .calendar-day strong {
-    font-size: 0.75rem;
-    margin-bottom: 0.2rem;
+    font-size: 0.7rem;
+    margin-bottom: 0.15rem;
   }
 
   .event-tag {
-    font-size: 0.6rem;
-    padding: 2px 4px;
+    font-size: 0.55rem;
+    padding: 1px 3px;
+  }
+
+  .event-tag button {
+    font-size: 0.7rem;
+    margin-left: 4px;
   }
 }
