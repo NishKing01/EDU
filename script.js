@@ -1,88 +1,136 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const nameKey = 'eduhub-user';
-  let userName = localStorage.getItem(nameKey);
+/* Layout */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #f0f4f8;
+  color: #333;
+}
 
-  if (!userName || userName.trim() === '') {
-    userName = prompt("Welcome to EduHub! What's your name?");
-    if (userName && userName.trim() !== '') {
-      localStorage.setItem(nameKey, userName);
-    } else {
-      userName = '';
-    }
-  }
+.app {
+  display: flex;
+  min-height: 100vh;
+}
 
-  if (userName) {
-    document.getElementById('hero-username').textContent = userName;
-    document.getElementById('profile-name').textContent = userName;
-    document.getElementById('profile-avatar').textContent = userName[0].toUpperCase();
-    document.getElementById('uploader').value = userName;
-  }
+.sidebar {
+  width: 220px;
+  background: #1e2a38;
+  color: white;
+  padding: 1rem;
+}
 
-  const subjects = [
-    'Chemistry',
-    'Physics',
-    'Biology',
-    'Mathematics',
-    'Computer Science',
-    'English',
-    'Islamic Studies'
-  ];
+.brand {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
 
-  const subjectDropdowns = document.querySelectorAll('select[name="subject"], #event-subject, #subject');
-  subjectDropdowns.forEach(dropdown => {
-    dropdown.innerHTML = '';
-    subjects.forEach(subject => {
-      const option = document.createElement('option');
-      option.value = subject;
-      option.textContent = subject;
-      dropdown.appendChild(option);
-    });
-  });
+nav a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 1rem 0;
+}
 
-  const calendarTitle = document.getElementById('calendar-title');
-  const calendarGrid = document.getElementById('calendar-grid');
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
+.main {
+  flex: 1;
+  padding: 2rem;
+}
 
-  calendarTitle.textContent = today.toLocaleString(undefined, { month: 'long', year: 'numeric' });
-  calendarGrid.innerHTML = '';
+.card {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 
-  const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  weekdays.forEach(day => {
-    const cell = document.createElement('div');
-    cell.textContent = day;
-    calendarGrid.appendChild(cell);
-  });
+/* Profile */
+.profile {
+  margin-top: 2rem;
+  text-align: center;
+}
 
-  for (let i = 0; i < firstDay; i++) {
-    const empty = document.createElement('div');
-    calendarGrid.appendChild(empty);
-  }
+.avatar {
+  width: 50px;
+  height: 50px;
+  background: #ffffff33;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 50px;
+  margin: 0 auto 0.5rem;
+  color: white;
+}
 
-  for (let d = 1; d <= daysInMonth; d++) {
-    const cell = document.createElement('div');
-    cell.textContent = d;
-    calendarGrid.appendChild(cell);
-  }
+.profile-name {
+  font-size: 1rem;
+}
 
-  document.getElementById('add-event-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const title = document.getElementById('event-title-input').value;
-    const subject = document.getElementById('event-subject').value;
-    const date = new Date().toISOString().split('T')[0];
+/* Classes */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
 
-    if (!subjects.includes(subject)) {
-      alert('Invalid subject selected.');
-      return;
-    }
+.class-card {
+  padding: 1rem;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-    fetch('/add-event', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, subject, date })
-    }).then(() => alert('Event saved!'));
-  });
-});
+.class-card:nth-child(1) { background: #0077cc; }
+.class-card:nth-child(2) { background: #4caf50; }
+.class-card:nth-child(3) { background: #9c27b0; }
+.class-card:nth-child(4) { background: #ff9800; }
+.class-card:nth-child(5) { background: #3f51b5; }
+.class-card:nth-child(6) { background: #795548; }
+.class-card:nth-child(7) { background: #009688; }
+
+/* Calendar */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#add-event-btn {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+
+.calendar-label {
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.calendar-day {
+  background: #e0e0e0;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.calendar-day strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.event-tag {
+  background: #0077cc;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin
