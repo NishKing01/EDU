@@ -1,14 +1,25 @@
-/* Layout */
-body {
-  font-family: 'Segoe UI', sans-serif;
+/* Reset & scaling */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', sans-serif;
   background: #f0f4f8;
   color: #333;
 }
 
+/* Layout */
 .app {
   display: flex;
-  min-height: 100vh;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .sidebar {
@@ -16,6 +27,7 @@ body {
   background: #1e2a38;
   color: white;
   padding: 1rem;
+  flex-shrink: 0;
 }
 
 .brand {
@@ -33,6 +45,7 @@ nav a {
 .main {
   flex: 1;
   padding: 2rem;
+  overflow-x: hidden;
 }
 
 .card {
@@ -67,7 +80,7 @@ nav a {
 /* Classes */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
 
@@ -107,6 +120,7 @@ nav a {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
+  min-width: 100%;
 }
 
 .calendar-label {
@@ -133,4 +147,122 @@ nav a {
   font-size: 0.75rem;
   padding: 2px 6px;
   border-radius: 4px;
-  margin
+  margin-top: 2px;
+  position: relative;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin-left: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Upload form */
+form label {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+form input, form select, form button {
+  max-width: 100%;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+form button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #005fa3;
+}
+
+/* Materials */
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.material-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.material-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.material-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.material-meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.material-card button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.view-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.delete-btn {
+  background: #f44336;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 2rem;
+}
+
+/* Optional desktop enhancements */
+@media (min-width: 768px) {
+  .main {
+    padding: 3rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .sidebar {
+    width: 240px;
+  }
+}
