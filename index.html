@@ -10,7 +10,7 @@
 <body>
   <div class="app">
     <aside class="sidebar">
-      <div class="brand"><span class="logo">E</span><span class="brand-name">EduHub</span></div>
+      <div class="brand">EduHub</div>
       <nav>
         <a href="#classes"><i class="fa-solid fa-chalkboard-user"></i> Classes</a>
         <a href="#dashboard"><i class="fa-solid fa-house"></i> Materials</a>
@@ -46,13 +46,6 @@
         <div class="filters">
           <select id="filter-subject">
             <option>All Subjects</option>
-            <option>Chemistry</option>
-            <option>Physics</option>
-            <option>Biology</option>
-            <option>Mathematics</option>
-            <option>Computer Science</option>
-            <option>English</option>
-            <option>Islamic Studies</option>
           </select>
           <select id="filter-format">
             <option>All Formats</option>
@@ -72,9 +65,9 @@
 
       <section id="upload" class="card">
         <h2>Upload a Resource</h2>
-        <form id="uploadForm" enctype="multipart/form-data" method="POST" action="/upload">
+        <form id="uploadForm">
           <label for="uploader">Your Name</label>
-          <input type="text" id="uploader" placeholder="e.g. Danish" required />
+          <input type="text" id="uploader" required />
           <label for="subject">Subject</label>
           <select name="subject" id="subject"></select>
           <label for="uploadFile">Choose File</label>
@@ -103,3 +96,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
