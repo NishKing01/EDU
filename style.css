@@ -1,90 +1,183 @@
+/* General layout */
 body {
-  font-family: sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  background: #f4f4f4;
+  background: #f0f4f8;
+  color: #333;
 }
+
 .app {
   display: flex;
+  min-height: 100vh;
 }
+
 .sidebar {
-  width: 200px;
-  background: #0077cc;
+  width: 220px;
+  background: #1e2a38;
   color: white;
   padding: 1rem;
 }
-.sidebar .brand {
+
+.brand {
   font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
-.sidebar .logo {
-  background: white;
-  color: #0077cc;
-  padding: 0.3rem 0.6rem;
-  border-radius: 50%;
-  margin-right: 0.5rem;
-}
-.sidebar a {
+
+nav a {
+  display: block;
   color: white;
   text-decoration: none;
-  display: block;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
-.profile {
-  margin-top: 2rem;
-}
-.avatar {
-  background: white;
-  color: #0077cc;
-  font-weight: bold;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 40px;
-}
+
 .main {
   flex: 1;
-  padding: 1rem;
+  padding: 2rem;
 }
+
 .card {
   background: white;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
+/* Profile */
+.profile {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background: #ffffff33;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 50px;
+  margin: 0 auto 0.5rem;
+  color: white;
+}
+
+.profile-name {
+  font-size: 1rem;
+}
+
+/* Classes grid */
 .grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
+
 .class-card {
-  background: #e0e0e0;
   padding: 1rem;
-  border-radius: 6px;
-  flex: 1;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
+
+.class-card h3 {
+  margin: 0 0 0.5rem;
 }
-th, td {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
+
+.class-card p {
+  margin: 0;
+  font-size: 0.9rem;
 }
+
+/* Subject-specific colors */
+.class-card:nth-child(1) { background: #0077cc; } /* Chemistry */
+.class-card:nth-child(2) { background: #4caf50; } /* Physics */
+.class-card:nth-child(3) { background: #9c27b0; } /* Biology */
+.class-card:nth-child(4) { background: #ff9800; } /* Mathematics */
+.class-card:nth-child(5) { background: #3f51b5; } /* Computer Science */
+.class-card:nth-child(6) { background: #795548; } /* English */
+.class-card:nth-child(7) { background: #009688; } /* Islamic Studies */
+
+/* Calendar grid */
 .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin-top: 1rem;
 }
+
 .calendar-grid div {
   background: #e0e0e0;
   padding: 0.5rem;
   text-align: center;
   border-radius: 4px;
 }
+
+/* Upload form */
+#uploadForm label {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+#uploadForm input, #uploadForm select {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+#uploadForm button {
+  background: #0077cc;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#uploadForm button:hover {
+  background: #005fa3;
+}
+
+/* Materials section */
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.material-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.material-card {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.material-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.material-meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Footer */
 .footer {
   text-align: center;
+  font-size: 0.8rem;
+  color: #888;
   margin-top: 2rem;
-  font-size: 0.9rem;
 }
