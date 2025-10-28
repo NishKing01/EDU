@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'Islamic Studies'
   ];
 
-  const subjectDropdowns = document.querySelectorAll('select[name="subject"], #event-subject');
+  const subjectDropdowns = document.querySelectorAll('select[name="subject"], #event-subject, #subject');
   subjectDropdowns.forEach(dropdown => {
     dropdown.innerHTML = '';
     subjects.forEach(subject => {
