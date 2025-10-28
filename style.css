@@ -300,5 +300,23 @@ form button:hover {
 
   .calendar-grid {
     grid-template-columns: repeat(7, 1fr);
+    gap: 0.3rem;
+  }
+
+  .calendar-label,
+  .calendar-day {
+    font-size: 0.65rem;
+    padding: 0.3rem;
+    min-height: 50px;
+  }
+
+  .calendar-day strong {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .event-tag {
+    font-size: 0.6rem;
+    padding: 2px 4px;
   }
 }
