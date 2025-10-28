@@ -12,6 +12,7 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   background: #f0f4f8;
   color: #333;
+  overflow-y: auto;
 }
 
 /* Layout */
@@ -252,17 +253,39 @@ form button:hover {
   margin-top: 2rem;
 }
 
-/* Optional desktop enhancements */
-@media (min-width: 768px) {
-  .main {
-    padding: 3rem;
-  }
-
-  .card {
-    padding: 2rem;
+/* ✅ Mobile Optimization */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
   }
 
   .sidebar {
-    width: 240px;
+    width: 100%;
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .main {
+    padding: 1rem;
+  }
+
+  .grid, .material-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
   }
 }
