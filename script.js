@@ -165,7 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
       viewBtn.textContent = 'View';
       viewBtn.classList.add('view-btn');
       viewBtn.onclick = () => {
-        alert(`Viewing: ${mat.title}\n(Feature: open file or preview)`);
+        if (mat.path) {
+          window.open(mat.path, '_blank');
+        } else {
+          alert(`No preview available for: ${mat.title}`);
+        }
       };
 
       const delBtn = document.createElement('button');
@@ -191,15 +195,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById(id).addEventListener('change', renderMaterials);
   });
 
+  // ✅ UPLOAD LOGIC
   document.getElementById('uploadForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    const title = document.getElementById('uploadFile').files[0]?.name;
+    const fileInput = document.getElementById('uploadFile');
+    const file = fileInput.files[0];
+    const title = file?.name;
     const subject = document.getElementById('subject').value;
     const format = title.split('.').pop().toUpperCase();
     const date = new Date().toISOString();
+    const path = `/uploads/${title}`; // Adjust if ESP32 serves from a different folder
 
     const materials = JSON.parse(localStorage.getItem('eduhub-materials') || '[]');
-    materials.push({ title, subject, format, date });
+    materials.push({ title, subject, format, date, path });
     localStorage.setItem('eduhub-materials', JSON.stringify(materials));
 
     alert('Upload saved!');
